@@ -14,6 +14,7 @@ Requires Python 3
 PIP: numpy, pandas, scikit-learn, matplotlib
 
 Original anime data goes into the data_prep folder as anime.csv
+
 Original heart data goes into the data_prep folder as heart.csv
 
 To recreate the whole process
