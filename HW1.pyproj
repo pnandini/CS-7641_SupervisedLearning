@@ -28,6 +28,9 @@
     <Compile Include="decisionTree_GS.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="plot_data.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="plot_learning_curve.py">
       <SubType>Code</SubType>
     </Compile>

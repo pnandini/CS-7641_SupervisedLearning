@@ -119,5 +119,6 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
     #axes[2].set_title("Performance of the model")
 
     fig.savefig(image_loc)
+    plt.close()
 
     #return plt
