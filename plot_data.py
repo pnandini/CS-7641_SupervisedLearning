@@ -22,6 +22,7 @@ def plot_data(X, Y, STD = None, image_loc = 'plot.png', title = '', x_label ='',
       plt.fill_between(X, np.add(Y, np.negative(STD)), np.add(Y, STD), alpha=0.1, color="red")
 
    plt.grid()
-   plt.plot(X, Y, color='red')
+   plt.plot(X, Y, color='red', label='Score')
+   plt.legend(loc='best')
    plt.savefig(image_loc)
    plt.close()

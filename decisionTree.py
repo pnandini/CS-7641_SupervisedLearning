@@ -22,16 +22,16 @@ train_anime_Y = train_anime_df.iloc[:,-1]
 
 title = "Decision Tree: Learning Curve for Anime"
 cv = ShuffleSplit(n_splits=100, test_size=0.2, random_state=0)
-estimator = DecisionTreeClassifier(criterion='entropy', max_depth=8, min_samples_leaf=4)
+estimator = DecisionTreeClassifier(criterion='gini', max_depth=12, min_samples_leaf=2)
 image_loc = os.path.join(image_folder, 'DT_learning_curve_anime.png')
-plot_learning_curve(estimator, title, train_anime_X, train_anime_Y, ylim=(0.35, 0.6), cv=cv, n_jobs=4, image_loc=image_loc)
+plot_learning_curve(estimator, title, train_anime_X, train_anime_Y, ylim=(0.55, 0.9), cv=cv, n_jobs=4, image_loc=image_loc)
 
 # Use Gridsearch to analyse the max_depth of DT
 model_X = []
 model_Y = []
 model_STD = []
-for i in range(1, 15):
-   tree_para = {'criterion':['entropy'],'max_depth':[i], 'min_samples_leaf':[4], 'random_state':[0]}
+for i in range(1, 25):
+   tree_para = {'criterion':['gini','entropy'],'max_depth':[i], 'min_samples_leaf':[1,2,3,4], 'random_state':[0]}
    dectree = GridSearchCV(DecisionTreeClassifier(), tree_para, cv=5)
    dectree.fit(train_anime_X, train_anime_Y)
    model_X.append(i)
@@ -60,7 +60,7 @@ model_X = []
 model_Y = []
 model_STD = []
 for i in range(1, 15):
-   tree_para = {'criterion':['entropy'],'max_depth':[i], 'min_samples_leaf':[4], 'random_state':[0]}
+   tree_para = {'criterion':['gini','entropy'],'max_depth':[i], 'min_samples_leaf':[1,2,3,4], 'random_state':[0]}
    dectree = GridSearchCV(DecisionTreeClassifier(), tree_para, cv=5)
    dectree.fit(train_heart_X, train_heart_Y)
    model_X.append(i)

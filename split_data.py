@@ -21,8 +21,8 @@ final_test_anime_loc  = os.path.join(folders[2], "test_"+data_sets[0])
 final_train_anime_loc = os.path.join(folders[2], "train_"+data_sets[0])
 
 # Save
-split_anime_df[anime_train_size:].to_csv(final_test_anime_loc,header=False)
-split_anime_df[:anime_train_size].to_csv(final_train_anime_loc,header=False)
+split_anime_df[anime_train_size:].to_csv(final_test_anime_loc,header=False,index=False)
+split_anime_df[:anime_train_size].to_csv(final_train_anime_loc,header=False,index=False)
 
 
 # Process Heart
@@ -39,7 +39,7 @@ final_test_heart_loc  = os.path.join(folders[2], "test_"+data_sets[1])
 final_train_heart_loc = os.path.join(folders[2], "train_"+data_sets[1])
 
 # Save
-split_heart_df[heart_train_size:].to_csv(final_test_heart_loc,header=False)
-split_heart_df[:heart_train_size].to_csv(final_train_heart_loc,header=False)
+split_heart_df[heart_train_size:].to_csv(final_test_heart_loc,header=False,index=False)
+split_heart_df[:heart_train_size].to_csv(final_train_heart_loc,header=False,index=False)
 
 print("Done splitting data!")

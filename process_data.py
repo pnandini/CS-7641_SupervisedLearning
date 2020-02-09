@@ -28,17 +28,15 @@ for index, row in prep_anime_df.iterrows():
 # Convert to a list and sort so we can have the columns in alphabetical order
 tags = list(tags)
 tags.sort()
+rating_median = prep_anime_df.rating.median()
 
 # Anime rating rules >= 90 => Great, else >= 80 Good, else >= 70 Mediocre, else >= 60 Bad, else Trash
+# New rule, 0 Good and 1 is bad
 def getRatingLabel(rating):
-   rules = [9.,8.,7.,6.]
+   if rating >= rating_median:
+      return 0
 
-   for i in range(len(rules)):
-      if rating >= rules[i]:
-         return i
-
-   # If nothing then one past the last rule will be the Trash label
-   return len(rules)
+   return 1
 
 processed_anime = {}
 
