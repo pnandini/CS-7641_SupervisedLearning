@@ -3,7 +3,7 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import ShuffleSplit
 from sklearn.model_selection import GridSearchCV
 from plot_learning_curve import plot_learning_curve
@@ -21,28 +21,27 @@ train_anime_df = pd.read_csv(train_anime_loc)
 train_anime_X = train_anime_df.iloc[:,:-1]
 train_anime_Y = train_anime_df.iloc[:,-1]
 
-title = "Support Vector Machine: Learning Curve for Anime"
+title = "K Nearest Neighbors: Learning Curve for Anime"
 cv = ShuffleSplit(n_splits=20, test_size=0.2, random_state=0)
-estimator = SVC(kernel='rbf',degree=2,gamma='scale',random_state=0)
-image_loc = os.path.join(image_folder, 'SVM_learning_curve_anime.png')
+estimator = KNeighborsClassifier(algorithm='ball_tree',n_neighbors=22,weights='distance')
+image_loc = os.path.join(image_folder, 'KNN_learning_curve_anime.png')
 plot_learning_curve(estimator, title, train_anime_X, train_anime_Y, cv=cv, n_jobs=4, image_loc=image_loc)
 
 # Use Gridsearch to analyse the hidden_layer_sizes of Neural
 model_X = []
 model_Y = []
 model_STD = []
-for i in range(1,10):
-   param = i * 0.25
-   tree_para = {'C':[param],'kernel': ['rbf'],'degree':[2], 'random_state':[0]}
-   dectree = GridSearchCV(SVC(), tree_para, cv=3)
+for i in range(5,30):
+   tree_para = {'n_neighbors':[i],'weights':['distance'], 'algorithm':['ball_tree']}
+   dectree = GridSearchCV(KNeighborsClassifier(), tree_para, cv=3)
    dectree.fit(train_anime_X, train_anime_Y)
-   model_X.append(param)
+   model_X.append(i)
    model_Y.append(dectree.best_score_)
    model_STD.append(np.average(dectree.cv_results_['std_test_score']))
 
-best_idx = (np.argmax(model_Y) + 1) * 0.25
-image_loc = os.path.join(image_folder, 'SVM_C_model_complexity_anime.png')
-plot_data(X=model_X, Y=model_Y, STD=model_STD, image_loc=image_loc, title='Support Vector Machine: C Score for Anime', x_label='C', x_best=best_idx)
+best_idx = np.argmax(model_Y) + 5
+image_loc = os.path.join(image_folder, 'KNN_N_model_complexity_anime.png')
+plot_data(X=model_X, Y=model_Y, STD=model_STD, image_loc=image_loc, title='K Nearest Neighbors: n_neighbors Score for Anime', x_label='n_neighbors', x_best=best_idx)
 
 # Process Heart
 print("Processing Heart...")
@@ -51,25 +50,24 @@ train_heart_df = pd.read_csv(train_heart_loc)
 train_heart_X = train_heart_df.iloc[:,:-1]
 train_heart_Y = train_heart_df.iloc[:,-1]
 
-title = "Neural Network: Learning Curve for Heart"
+title = "K Nearest Neighbors: Learning Curve for Heart"
 cv = ShuffleSplit(n_splits=20, test_size=0.1, random_state=0)
-estimator = SVC(C=3.,kernel='rbf',random_state=0)
-image_loc = os.path.join(image_folder, 'SVM_learning_curve_heart.png')
+estimator = KNeighborsClassifier(algorithm='ball_tree',n_neighbors=11,weights='uniform')
+image_loc = os.path.join(image_folder, 'KNN_learning_curve_heart.png')
 plot_learning_curve(estimator, title, train_heart_X, train_heart_Y, cv=cv, n_jobs=4, image_loc=image_loc)
 
 # Use Gridsearch to analyse the hidden_layer_sizes of Neural
 model_X = []
 model_Y = []
 model_STD = []
-for i in range(1,20):
-   param = i * 0.25
-   tree_para = {'C':[param],'kernel': ['rbf'],'degree':[2], 'random_state':[0]}
-   dectree = GridSearchCV(SVC(), tree_para, cv=5)
+for i in range(5,30):
+   tree_para = {'n_neighbors':[i],'weights':['uniform'], 'algorithm':['ball_tree']}
+   dectree = GridSearchCV(KNeighborsClassifier(), tree_para, cv=3)
    dectree.fit(train_heart_X, train_heart_Y)
-   model_X.append(param)
+   model_X.append(i)
    model_Y.append(dectree.best_score_)
    model_STD.append(np.average(dectree.cv_results_['std_test_score']))
 
-best_idx = (np.argmax(model_Y) + 1) * 0.25
-image_loc = os.path.join(image_folder, 'SVM_C_model_complexity_heart.png')
-plot_data(X=model_X, Y=model_Y, STD=model_STD, image_loc=image_loc, title='Support Vector Machine: C Score for Heart', x_label='C', x_best=best_idx)
+best_idx = np.argmax(model_Y) + 5
+image_loc = os.path.join(image_folder, 'KNN_model_complexity_heart.png')
+plot_data(X=model_X, Y=model_Y, STD=model_STD, image_loc=image_loc, title='K Nearest Neighbors: n_neighbors Score for Heart', x_label='n_neighbors', x_best=best_idx)
