@@ -1,5 +1,9 @@
 CS7641: Supervised Learning Project 
+
 by Juan Carlos Maggi (jmaggi3@gatech.edu)
+
+Code Location: https://github.com/juancarlosmaggi/CS-7641_SupervisedLearning
+
 
 Original Data
 Anime MAL: https://www.kaggle.com/CooperUnion/anime-recommendations-database
