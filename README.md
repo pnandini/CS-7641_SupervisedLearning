@@ -11,11 +11,9 @@ PIP: numpy, pandas, scikit-learn, matplotlib
 Original anime data goes into the data_prep folder as anime.csv
 Original heart data goes into the data_prep folder as heart.csv
 
-To recreate the whole process we need to process and split the data first
+To recreate the whole process
 1) python process_data.py
 2) python split_data.py
-
-Then process the Models in any order as needed
 3) python decisionTree.py
 4) python boosting.py
 5) python knn.py
