@@ -10,7 +10,8 @@ def plot_data(X, Y, STD = None, image_loc = 'plot.png', title = '', x_label ='',
    diff_Y = max_Y - min_Y
    buffer_Y = diff_Y * 0.5
 
-   plt.ylim(min_Y-buffer_Y, max_Y+buffer_Y)
+   #if buffer_Y > 0.01:
+   #   plt.ylim(min_Y-buffer_Y, max_Y+buffer_Y)
    #plt.ylim(0.5, 1.01)
    plt.title(title)
    plt.ylabel('Score')

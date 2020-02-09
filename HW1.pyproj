@@ -5,7 +5,7 @@
     <ProjectGuid>5a81bd30-87f2-4de2-8009-ee3a67ebb915</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>neural.py</StartupFile>
+    <StartupFile>knn_GS.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -28,9 +28,12 @@
     <Compile Include="boostingDT_GS.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="knn_GS.py" />
+    <Compile Include="svm.py" />
     <Compile Include="neural.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="svm_GS.py" />
     <Compile Include="neural_GS.py">
       <SubType>Code</SubType>
     </Compile>
