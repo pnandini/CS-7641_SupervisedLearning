@@ -5,7 +5,7 @@ import pandas as pd
 import os
 import numpy as np
 
-print("Begining DecissionTree process.")
+print("Begining DecissionTree GS process.")
 
 # This file moves the files along their required processes
 folder = "data_final"

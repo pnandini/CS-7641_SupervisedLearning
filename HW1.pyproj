@@ -5,7 +5,7 @@
     <ProjectGuid>5a81bd30-87f2-4de2-8009-ee3a67ebb915</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>boosting.py</StartupFile>
+    <StartupFile>neural.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -26,6 +26,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="boostingDT_GS.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="neural.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="neural_GS.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="decisionTree.py">
