@@ -51,7 +51,7 @@ train_heart_df = pd.read_csv(train_heart_loc)
 train_heart_X = train_heart_df.iloc[:,:-1]
 train_heart_Y = train_heart_df.iloc[:,-1]
 
-title = "Neural Network: Learning Curve for Heart"
+title = "Support Vector Machine: Learning Curve for Heart"
 cv = ShuffleSplit(n_splits=20, test_size=0.1, random_state=0)
 estimator = SVC(C=3.,kernel='rbf',random_state=0)
 image_loc = os.path.join(image_folder, 'SVM_learning_curve_heart.png')
