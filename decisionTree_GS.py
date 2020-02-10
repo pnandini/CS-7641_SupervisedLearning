@@ -27,7 +27,7 @@ train_anime_Y = train_anime_df.iloc[:,-1]
 test_anime_Y = test_anime_df.iloc[:,-1]
 
 # Train Decission Tree
-tree_para = {'criterion':['gini','entropy'],'max_depth':(np.arange(25)+1).tolist(), 'min_samples_leaf':[1,2,3,4], 'random_state':[0]}
+tree_para = {'criterion':['gini','entropy'],'max_depth':[21], 'min_samples_leaf':[1,2,3,4], 'random_state':[0]}
 dectree_anime = GridSearchCV(DecisionTreeClassifier(), tree_para, cv=5)
 dectree_anime.fit(train_anime_X, train_anime_Y)
 
@@ -52,7 +52,7 @@ train_heart_Y = train_heart_df.iloc[:,-1]
 test_heart_Y = test_heart_df.iloc[:,-1]
 
 # Train Decission Tree
-tree_para = {'criterion':['gini','entropy'],'max_depth':[4,5,6,7,8,9,10,11,12,13,14,15,20], 'min_samples_leaf':[1,2,3,4], 'random_state':[0]}
+tree_para = {'criterion':['gini','entropy'],'max_depth':[7], 'min_samples_leaf':[1,2,3,4], 'random_state':[0]}
 dectree_heart = GridSearchCV(DecisionTreeClassifier(), tree_para, cv=5)
 dectree_heart.fit(train_heart_X, train_heart_Y)
 

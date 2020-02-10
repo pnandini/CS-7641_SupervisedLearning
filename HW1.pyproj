@@ -5,7 +5,7 @@
     <ProjectGuid>5a81bd30-87f2-4de2-8009-ee3a67ebb915</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>svm.py</StartupFile>
+    <StartupFile>results.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -30,6 +30,9 @@
     </Compile>
     <Compile Include="knn_GS.py" />
     <Compile Include="knn.py" />
+    <Compile Include="results.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="svm.py" />
     <Compile Include="neural.py">
       <SubType>Code</SubType>

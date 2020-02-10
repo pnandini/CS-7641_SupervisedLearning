@@ -27,4 +27,10 @@ To recreate the whole process
 7) python neural.py
 
 Step 3 through 7 will generate the images in the images folder
+
 I also created the *_GS.py files to help me get started with the parameters I needed to use for my graph generations.
+
+
+To get the final results
+
+python results.py
